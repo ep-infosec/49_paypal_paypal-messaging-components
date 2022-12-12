@@ -1,0 +1,108 @@
+strong {
+    font-family: $paypal-open-bold;
+    color: $text-main;
+}
+
+.offer {
+    &__container {
+        &:first-child {
+            margin-top: 16px;
+        }
+
+        &:not(:last-child)::after {
+            content: '';
+            border-bottom: 0.5px solid $offer-border-gray;
+            display: block;
+            margin-top: 20px;
+            margin-bottom: 20px;
+
+            @include mobile {
+                margin-top: 20px;
+                margin-bottom: 5px;
+            }
+        }
+
+        @include desktop {
+            &:last-child {
+                margin-bottom: 20px;
+            }
+        }
+
+        @include tablet {
+            &:first-child {
+                margin-top: 35px;
+            }
+            &:last-child {
+                margin-bottom: 20px;
+            }
+        }
+
+        @include mobile {
+            &:last-child {
+                margin-bottom: 20px;
+            }
+        }
+    }
+    &__row {
+        display: flex;
+        justify-content: space-between;
+        &:first-child {
+            padding-bottom: 10px;
+        }
+
+        @include mobile {
+            &:first-child {
+                padding-bottom: 10px;
+            }
+        }
+    }
+    &__field-header {
+        font-size: 18px;
+        @include mobile {
+            font-size: 18px;
+            margin-top: 16px;
+        }
+        @include smallMobile {
+            font-size: 1rem;
+        }
+    }
+
+    &__field-col {
+        display: inline-block;
+        max-width: 33.33%;
+
+        &:not(:last-child) {
+            flex-grow: 1;
+        }
+    }
+
+    &__field-title {
+        display: flex;
+        font-size: 18px;
+        color: $gray;
+        margin: 0px;
+        @include smallMobile {
+            font-size: 18px;
+        }
+
+        &:is(strong) {
+            color: $text-main;
+        }
+    }
+
+    &__field-value {
+        font-size: 18px;
+        color: $gray;
+        margin: 0px;
+        @include mobile {
+            font-size: 18px;
+        }
+        @include smallMobile {
+            font-size: 0.9rem;
+        }
+
+        &:is(strong) {
+            color: $text-main;
+        }
+    }
+}

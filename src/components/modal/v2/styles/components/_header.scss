@@ -1,0 +1,304 @@
+.header {
+    &__container {
+        position: relative;
+
+        @include desktop {
+            padding-bottom: 30px;
+        }
+        @include tablet {
+            padding-bottom: 40px;
+        }
+        @include mobile {
+            padding-bottom: 40px;
+        }
+    }
+
+    &__fixed-wrapper {
+        @include fixedWrapper;
+
+        z-index: 0;
+        top: 0;
+        overflow: hidden;
+        border-radius: $content-wrapper-border-radius $content-wrapper-border-radius 0 0;
+
+        &--front {
+            z-index: 1;
+        }
+
+        @include mobile {
+            border-radius: 0;
+        }
+
+        @include apiIframe {
+            border-radius: 0;
+        }
+
+        @include lander {
+            border-radius: 0;
+        }
+    }
+
+    &__background-wrapper {
+        overflow: hidden;
+        height: 25rem; // Needs to be tall enough to seamlessly flow behind the main body content
+        max-height: 85vh; // Prevent it from bleeding below on small height tablet views
+        background-color: $beige;
+
+        // We have multiple backgrounds to give the appearance of
+        // reserving space at the top of the modal when scrolling.
+        // This requires having a portion of the background with a
+        // higher z-index so that the content scrolls underneath
+        &--sticky {
+            height: $sticky-header-height-tablet-desktop;
+
+            @include mobile {
+                height: $sticky-header-height-mobile;
+            }
+        }
+
+        &--gradient {
+            // Ends right above the header text in the scenario where mask-image
+            // isn't supported to prevent hiding the text on initial render
+            height: 10rem;
+            -webkit-mask-image: linear-gradient(
+                to bottom,
+                black,
+                black $sticky-header-height-tablet-desktop,
+                transparent 100px
+            );
+            mask-image: linear-gradient(
+                to bottom,
+                black,
+                black $sticky-header-height-tablet-desktop,
+                transparent 100px
+            );
+
+            @include mobile {
+                -webkit-mask-image: linear-gradient(
+                    to bottom,
+                    black,
+                    black $sticky-header-height-mobile,
+                    transparent 100px
+                );
+                mask-image: linear-gradient(to bottom, black, black $sticky-header-height-mobile, transparent 100px);
+            }
+        }
+    }
+
+    &__icons {
+        box-sizing: border-box;
+        justify-content: space-between;
+        align-items: center;
+        margin: auto;
+        z-index: 1001;
+        display: flex;
+        height: auto;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        width: 100%;
+        flex: 0 0 $sticky-header-height-tablet-desktop;
+
+        @include mobile {
+            flex: 0 0 $sticky-header-height-mobile;
+        }
+
+        .logo {
+            &__wrapper {
+                z-index: 9;
+                transform: translate(0, 2rem);
+                transition: transform 0.2s ease-out;
+                padding: 0 20px;
+
+                @include desktop {
+                    padding: 0px;
+                    margin-left: 48px;
+                }
+
+                @include tablet {
+                    padding: 0px;
+                    margin-left: 56px;
+                }
+
+                &--scroll {
+                    transform: translate(-3rem, 0);
+                    @include mobile {
+                        transform: translate(0, 0);
+                    }
+                }
+            }
+        }
+
+        .close {
+            pointer-events: all;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 9;
+
+            @include desktop {
+                margin-left: auto;
+                margin-right: 2px;
+            }
+
+            @include tablet {
+                margin-left: auto;
+                margin-right: 2px;
+            }
+
+            @include mobile {
+                margin-top: 1px;
+                margin-right: 2px;
+            }
+
+            svg {
+                height: 48px;
+                width: 48px;
+
+                @include desktop {
+                    margin: 0px;
+                }
+
+                @include tablet {
+                    margin: 0px;
+                }
+
+                path {
+                    stroke-width: 2.2;
+                }
+            }
+        }
+    }
+
+    &__content {
+        padding-top: 2rem;
+        position: relative;
+
+        @include desktop {
+            padding-bottom: 40px;
+        }
+        @include tablet {
+            width: 100%;
+            padding-bottom: 40px;
+        }
+
+        svg {
+            position: absolute;
+            right: 0;
+            bottom: 36px;
+
+            @include desktop {
+                &.background-mobile {
+                    display: none;
+                }
+            }
+
+            @include tablet {
+                &.background-mobile {
+                    display: none;
+                }
+            }
+
+            @include mobile {
+                &.background-desktop {
+                    display: none;
+                }
+            }
+        }
+
+        h2 {
+            font-size: 28px;
+            font-weight: 400;
+            line-height: 36px;
+            text-align: left;
+            color: $text-main;
+            margin-left: 52px;
+            margin-top: 10px;
+
+            @include desktop {
+                margin-bottom: 10px;
+
+                br {
+                    display: none;
+                }
+            }
+
+            @include tablet {
+                margin-left: 62px;
+                @include lander {
+                    max-width: 100%;
+                }
+
+                br {
+                    display: none;
+                }
+            }
+
+            @include mobile {
+                margin-bottom: 5px;
+                margin-left: 22px;
+                max-width: 84%;
+            }
+
+            @include smallMobile {
+                font-size: 1.7rem;
+                max-width: 81%;
+            }
+
+            &.headline-de {
+                @include tablet {
+                    margin-right: 20px;
+                }
+
+                @include mobile {
+                    line-height: 30px;
+                    margin-right: 50px;
+                    margin-left: 0px;
+                    padding: 10px 25px 0px;
+                }
+
+                @include apiIframe {
+                    max-width: 500px;
+                    @include mobile {
+                        max-width: 279px;
+                    }
+                }
+            }
+        }
+
+        h3 {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 24px;
+            text-align: left;
+            color: $text-main;
+            margin: 0px;
+
+            @include desktop {
+                margin-left: 52px;
+                margin-top: 0px;
+                margin-bottom: 80px;
+            }
+
+            @include tablet {
+                max-width: 380px;
+                margin-left: 62px;
+                margin-bottom: 60px;
+            }
+
+            @include mobile {
+                max-width: 75%;
+                padding: 10px 22px 100px;
+                line-height: 20px;
+            }
+
+            @include smallMobile {
+                max-width: 67%;
+            }
+
+            span {
+                white-space: nowrap;
+            }
+        }
+    }
+}

@@ -1,0 +1,61 @@
+html,
+body {
+    height: 100% !important;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+html {
+    min-width: inherit !important;
+
+    &.lander {
+        // Overscroll background color since we use an SVG pattern
+        // for the core background which moves with the overscroll
+        background: $lander-beige;
+    }
+}
+
+body {
+    margin: 0;
+    font-family: $paypal-open;
+    color: $text-main;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.spinner {
+    display: none;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg) translate(-50%, -50%);
+    }
+    100% {
+        -webkit-transform: rotate(360deg) translate(-50%, -50%);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg) translate(-50%, -50%);
+    }
+    100% {
+        transform: rotate(360deg) translate(-50%, -50%);
+    }
+}
+
+// for screen readers
+.sr-only {
+    border: 0 !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+    -webkit-clip-path: inset(50%) !important;
+    clip-path: inset(50%) !important;
+    height: 1px !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+    white-space: nowrap !important;
+}

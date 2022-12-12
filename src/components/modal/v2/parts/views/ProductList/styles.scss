@@ -1,0 +1,23 @@
+@import '../../../styles/globals/colors';
+@import '../../../styles/globals/mixins';
+
+p {
+    color: $text-main;
+    font-size: 18px;
+    width: 100%;
+
+    @include mobile {
+        width: auto;
+    }
+
+    @include lander {
+        margin-top: 30px;
+    }
+
+    &.pay-later {
+        margin-top: 0;
+    }
+    &.credit {
+        margin-top: 7px;
+    }
+}

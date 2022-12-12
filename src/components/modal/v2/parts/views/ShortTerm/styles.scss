@@ -1,0 +1,56 @@
+@import '../../../styles/globals/colors';
+@import '../../../styles/globals/mixins';
+
+.donuts {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    @include desktop {
+        min-height: 5em;
+        top: 0;
+        margin-bottom: 0px;
+    }
+
+    &__container {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 100%;
+        max-width: 360px;
+        margin: 0 auto;
+        padding: 0 20px 15px 20px;
+
+        @include desktop {
+            transform: translate(0px, 1rem);
+            position: relative;
+            top: 30px;
+        }
+
+        @include tablet {
+            max-width: 400px;
+        }
+
+        @include mobile {
+            padding: 0 0 15px;
+        }
+
+        @include smallMobile {
+            padding: 0px;
+        }
+    }
+}
+.learnMoreLink__container {
+    @include desktop {
+        margin-left: 44px;
+    }
+
+    @include tablet {
+        margin-left: 44px;
+    }
+
+    @include mobile {
+        margin-top: 20px;
+        margin-left: 0px;
+    }
+}

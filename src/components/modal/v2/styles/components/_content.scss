@@ -1,0 +1,115 @@
+.content__container {
+    position: relative;
+    background: transparent;
+    box-sizing: border-box;
+    padding-top: 0;
+    background: $beige;
+    padding-bottom: 1.5rem;
+    flex-grow: 1;
+    margin-top: -$sticky-header-radius;
+    z-index: 1000;
+
+    main {
+        color: $gray;
+        padding-top: 0;
+        height: 100%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 100%;
+    }
+
+    .content__body {
+        flex: 1 1 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 0 20px;
+    }
+
+    .content__row {
+        &.dynamic {
+            display: flex;
+            flex-direction: column;
+            margin: 0 -20px;
+            background: $white;
+            padding-top: 1.5rem;
+            padding-left: 25px;
+            padding-right: 25px;
+
+            &.product-list {
+                @include tablet {
+                    padding-left: 65px;
+                    padding-right: 65px;
+                }
+            }
+
+            @include desktop {
+                height: 100%;
+
+                .content__col {
+                    width: 50%;
+                }
+            }
+        }
+
+        .content__col {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+
+            @include mobile {
+                width: 100%;
+            }
+
+            &.collapsed {
+                &:last-child {
+                    @include desktop {
+                        position: absolute;
+                        right: 0;
+                    }
+                }
+            }
+
+            &:first-child {
+                @include tablet {
+                    align-items: center;
+                    width: 100%;
+                }
+            }
+
+            &:last-child {
+                @include tablet {
+                    display: none;
+                }
+                @include mobile {
+                    display: none;
+                }
+                @include smallMobile {
+                    display: none;
+                }
+            }
+
+            .product-list {
+                width: 100%;
+            }
+        }
+
+        &.disclosure {
+            text-align: left;
+            font-size: 14px;
+            line-height: 20px;
+
+            @include desktop {
+                margin: 42px 30px 23px 30px;
+            }
+
+            @include tablet {
+                margin: 42px 44px 20px 44px;
+            }
+
+            @include mobile {
+                margin-top: 28px;
+            }
+        }
+    }
+}

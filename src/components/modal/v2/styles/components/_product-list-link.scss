@@ -1,0 +1,33 @@
+.product-list-link {
+    display: flex;
+    border: none;
+    background: transparent;
+    min-width: 315px;
+    text-decoration: underline;
+    color: $light-blue;
+    font-family: $paypal-open-bold;
+    cursor: pointer;
+    padding: 0;
+
+    @include desktop {
+        margin: 0px 0px 20px 30px;
+    }
+
+    @include tablet {
+        margin: 0px 44px 20px 44px;
+    }
+
+    @include mobile {
+        margin: 20px 0px 20px 0px;
+    }
+
+    &.no-interest {
+        margin: 0px;
+    }
+
+    &.de {
+        @include mobile {
+            margin-top: 0px;
+        }
+    }
+}
